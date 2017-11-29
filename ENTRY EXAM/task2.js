@@ -1,6 +1,6 @@
 function solve(args) {
-    let bricks = args.slice(0, 3).map(Number);
-    let layers = +args[3];
+    const bricks = args.slice(0, 3).map(Number);
+    const layers = +args[3];
     let totalBricks = 0;
 
     for (let i = layers; i > 0; i -= 1) {
@@ -8,7 +8,7 @@ function solve(args) {
     }
 
     for (let i = 3; i < totalBricks; i += 1) {
-        let currentBrick = bricks[i - 1] + bricks[i - 2] + bricks[i - 3];
+        const currentBrick = bricks[i - 1] + bricks[i - 2] + bricks[i - 3];
         bricks.push(currentBrick);
     }
 
@@ -25,4 +25,4 @@ solve([1, 4, 2, 3]);
 
 console.log('===============');
 
-solve([1, -1, 1, 4,]);
+solve([1, -1, 1, 4]);

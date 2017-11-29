@@ -1,9 +1,9 @@
 function solve(meals, commands) {
     let count = 0;
     let command, meal;
-    let foodGone = false;
+    const foodGone = false;
     for (let i = 0; i < commands.length; i += 1) {
-        let currentCommand = commands[i].split(' ');
+        const currentCommand = commands[i].split(' ');
         if (currentCommand == 'End') {
             break;
         }
@@ -19,10 +19,10 @@ function solve(meals, commands) {
                 }
                 meals.unshift(currentCommand[1]); break;
             case 'Shift':
-                let firstIndex = +currentCommand[1];
-                let secondIndex = + currentCommand[2];
+                const firstIndex = +currentCommand[1];
+                const secondIndex = + currentCommand[2];
                 if (meals[firstIndex] !== undefined && meals[secondIndex] !== undefined) {
-                    let currentMeal = meals[firstIndex];
+                    const currentMeal = meals[firstIndex];
                     meals[firstIndex] = meals[secondIndex];
                     meals[secondIndex] = currentMeal;
                 } break;
@@ -33,10 +33,10 @@ function solve(meals, commands) {
                 console.log(`${meals.shift()} eaten`);
                 count += 1; break;
             case 'Consume':
-                let startIndex = +currentCommand[1];
-                let endIndex = + currentCommand[2];
+                const startIndex = +currentCommand[1];
+                const endIndex = + currentCommand[2];
                 if (meals[startIndex] !== undefined && meals[endIndex] !== undefined) {
-                    let mealsEaten = endIndex - startIndex + 1;
+                    const mealsEaten = endIndex - startIndex + 1;
                     count += mealsEaten;
                     meals.splice(startIndex, mealsEaten);
                     console.log('Burp!');
@@ -46,7 +46,7 @@ function solve(meals, commands) {
     if (meals.length > 0) {
         console.log(`Meals left: ${meals.join(', ')}`);
     } else {
-        console.log("The food is gone");
+        console.log('The food is gone');
     }
 
     console.log(`Meals eaten: ${count}`);

@@ -19,4 +19,4 @@
 '<div>',
 '    <nk-template render="first" />',
 '    <nk-template render="second" />',
-'</div>'
+'</div>';

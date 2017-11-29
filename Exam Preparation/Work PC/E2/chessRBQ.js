@@ -5,18 +5,18 @@ function solve(params) {
         board = params.slice(2, 2 + rows);
 
     function parseMove(move) {
-        let cells = move.split(' ');
+        const cells = move.split(' ');
 
         return {
             from: {
                 row: rows - Number(cells[0][1]),
-                col: cells[0].charCodeAt(0) - 97
+                col: cells[0].charCodeAt(0) - 97,
             },
             to: {
                 row: rows - Number(cells[1][1]),
-                col: cells[1].charCodeAt(0) - 97
-            }
-        }
+                col: cells[1].charCodeAt(0) - 97,
+            },
+        };
     }
 
     function moveRook(from, to) {
@@ -56,8 +56,8 @@ function solve(params) {
             return false;
         }
 
-        let deltaRow = from.row > to.row ? -1 : 1;
-        let deltaCol = from.col > to.col ? -1 : 1;
+        const deltaRow = from.row > to.row ? -1 : 1;
+        const deltaCol = from.col > to.col ? -1 : 1;
 
         while ((from.row !== to.row) || (from.col !== to.col)) {
             from.row += deltaRow;
@@ -67,38 +67,34 @@ function solve(params) {
                 return false;
             }
         }
-        
+
         return true;
     }
     function moveQueen(from, to) {
         return moveBishop(from, to) || moveRook(from, to);
     }
 
-    //print moves
+    // print moves
     for (m of moves) {
-        let move = parseMove(m);
-        let figure = board[move.from.row][move.from.col];
-        
+        const move = parseMove(m);
+        const figure = board[move.from.row][move.from.col];
+
         if (figure === 'R') {
-            let canMove = moveRook(move.from, move.to);
+            const canMove = moveRook(move.from, move.to);
             console.log(canMove ? 'yes' : 'no');
-        }
-        else if (figure === 'B') {
-            let canMove = moveBishop(move.from, move.to);
+        } else if (figure === 'B') {
+            const canMove = moveBishop(move.from, move.to);
             console.log(canMove ? 'yes' : 'no');
-        }
-        else if (figure === 'Q') {
-            let canMove = moveQueen(move.from, move.to);
+        } else if (figure === 'Q') {
+            const canMove = moveQueen(move.from, move.to);
             console.log(canMove ? 'yes' : 'no');
-        }else{
+        } else {
             console.log('no');
         }
-
-
     }
 }
 
-let arr = ['9',
+const arr = ['9',
 '9',
 '---Q-----',
 '------Q--',

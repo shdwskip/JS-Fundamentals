@@ -12,16 +12,15 @@ function solve(args) {
 
     console.log(result.sort().join('\n'));
 
-    //function fillSelectors() {
+    // function fillSelectors() {
     for (let line of args) {
         line = line.trim();
-        //check for priority symbol
+        // check for priority symbol
         if (checkPrioritySymbol(line)) {
             setPriority = true;
-
         }
         if (line[0] === prioritySymbol) {
-            let newPriority = +line.substr(1).trim();
+            const newPriority = +line.substr(1).trim();
             if (inSelector) {
                 localPriority = newPriority;
             } else {
@@ -33,7 +32,7 @@ function solve(args) {
             inSelector = true;
             localPriority = globalPriority;
             line = line.split(openSelector);
-            let selectorName = line[0].trim();
+            const selectorName = line[0].trim();
             if (!bindings.hasOwnProperty(selectorName)) {
                 bindings[selectorName] = {};
             }
@@ -51,10 +50,10 @@ function solve(args) {
         if (inSelector) {
             if (line[0] !== prioritySymbol) {
                 line = line.split(/[:;]/g);
-                let key = line[0].trim();
-                let value = line[1].trim();
+                const key = line[0].trim();
+                const value = line[1].trim();
                 let currentPriority = localPriority;
-                let priorityIndex = line[2].indexOf(prioritySymbol);
+                const priorityIndex = line[2].indexOf(prioritySymbol);
                 if (priorityIndex > - 1) {
                     localPriority = parseInt(line[2].substr(priorityIndex + 1).trim());
                     currentPriority = localPriority;
@@ -63,28 +62,27 @@ function solve(args) {
                 if (!selectors.hasOwnProperty(key)) {
                     selectors[key] = {
                         value: value,
-                        priority: currentPriority
+                        priority: currentPriority,
                     };
                 } else {
-                    let obj = selectors[key];
+                    const obj = selectors[key];
                     if (obj.priority < currentPriority) {
                         obj.value = value;
                         obj.priority = currentPriority;
                     }
                 }
-            }else{
-               //let currentPriority = localPriority;
+            } else {
+               // let currentPriority = localPriority;
                 globalPriority = localPriority;
             }
         }
-
     }
 
-    for (let selector in bindings) {
+    for (const selector in bindings) {
         selectors = bindings[selector];
-        for (let key in selectors) {
-            let value = selectors[key].value;
-            let line = `${selector} { ${key}: ${value}; }`;
+        for (const key in selectors) {
+            const value = selectors[key].value;
+            const line = `${selector} { ${key}: ${value}; }`;
             result.push(line);
         }
     }
@@ -98,7 +96,7 @@ function solve(args) {
     }
 }
 
-let test2 = [
+const test2 = [
     'enthusiasm { @5',
     '  ap-percept-ion:buying;',
     '  @2',
@@ -128,7 +126,7 @@ let test2 = [
     'enthusiasm { @15',
     '  houston:NkR99XZ;',
     '  ap-percept-ion:aPQG;',
-    '}'
+    '}',
 ];
 // Output:
 // enthusiasm { ap-percept-ion: aPQG; }

@@ -4,16 +4,16 @@ function solve(args) {
         cols = fieldSize[1],
         emptyField = -1,
         field = createField(),
-        debris = args[1].split(';').map(x => x.split(' ').map(Number)),
+        debris = args[1].split(';').map((x) => x.split(' ').map(Number)),
         debri = '@',
         playerTanks = {
             'Koceto': 4,
-            'Cuki': 4
+            'Cuki': 4,
         },
         player = '';
 
 
-    let tankPositions = [
+    const tankPositions = [
         { row: 0, col: 0 },
         { row: 0, col: 1 },
         { row: 0, col: 2 },
@@ -21,57 +21,54 @@ function solve(args) {
         { row: rows - 1, col: cols - 1 },
         { row: rows - 1, col: cols - 2 },
         { row: rows - 1, col: cols - 3 },
-        { row: rows - 1, col: cols - 4 }
+        { row: rows - 1, col: cols - 4 },
     ];
 
-    let commands = args.slice(3).map(function (x) {
-        let line = x.split(' ');
+    const commands = args.slice(3).map(function(x) {
+        const line = x.split(' ');
         // if tank moves
         if (line.length > 3) {
             return {
                 action: line[0],
                 tank: line[1],
                 moves: line[2],
-                dir: line[3]
+                dir: line[3],
             };
-        } else {
+        }
             // tank shoots
             return {
                 action: line[0],
                 tank: line[1],
-                dir: line[2]
+                dir: line[2],
             };
-        }
-
     });
 
     // place tanks on the field
-    for (let i in tankPositions) {
+    for (const i in tankPositions) {
         field[tankPositions[i].row][tankPositions[i].col] = i;
     }
 
-    //place debris on the field
+    // place debris on the field
     for (let i = 0; i < debris.length; i += 1) {
-        let debriRow = debris[i][0];
-        let debriCol = debris[i][1];
+        const debriRow = debris[i][0];
+        const debriCol = debris[i][1];
         field[debriRow][debriCol] = debri;
     }
 
     for (let i = 0; i < commands.length; i += 1) {
-        let line = commands[i];
+        const line = commands[i];
         if (line.action == 'mv') {
             moveTank(+line.tank, +line.moves, line.dir);
-        }
-        else if (line.action == 'x') {
+        } else if (line.action == 'x') {
             shootWithTank(+line.tank, line.dir);
         }
     }
 
-    //create RxC field with '-1'
+    // create RxC field with '-1'
     function createField() {
-        let field = new Array(rows);
+        const field = new Array(rows);
         field.fill(0);
-        for (let i in field) {
+        for (const i in field) {
             field[i] = new Array(cols);
             field[i].fill(emptyField);
         }
@@ -91,8 +88,8 @@ function solve(args) {
         }
 
         while (moves > 0) {
-            let newRow = tankRow + deltaRow;
-            let newCol = tankCol + deltaCol;
+            const newRow = tankRow + deltaRow;
+            const newCol = tankCol + deltaCol;
             if (newRow < 0 || newRow > rows - 1 || newCol < 0 || newCol > cols - 1) {
                 break;
             }
@@ -126,12 +123,11 @@ function solve(args) {
             if (field[shotRow][shotCol] == emptyField) {
                 shotRow += deltaRow;
                 shotCol += deltaCol;
-            }
-            else if (field[shotRow][shotCol] == debri) {
+            } else if (field[shotRow][shotCol] == debri) {
                 field[shotRow][shotCol] = emptyField;
                 break;
             } else {
-                let destroyedTank = field[shotRow][shotCol];
+                const destroyedTank = field[shotRow][shotCol];
                 field[shotRow][shotCol] = emptyField;
                 if (destroyedTank < 4) {
                     player = 'Koceto';
@@ -144,11 +140,8 @@ function solve(args) {
                     console.log(`${player} is gg`);
                 }
                 break;
-
             }
         }
-
-
     }
 }
 
@@ -163,5 +156,5 @@ solve([
     'x 0 r',
     'mv 0 9 r',
     'mv 5 1 r',
-    'x 5 u'
+    'x 5 u',
 ]);

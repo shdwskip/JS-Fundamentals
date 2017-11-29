@@ -14,7 +14,7 @@ function solve(args) {
 
     while (true) {
         totalJumps += 1;
-        let currentMove = directions[currentRow][currentCol];
+        const currentMove = directions[currentRow][currentCol];
         moves(currentMove);
         if (currentRow < 0 || currentRow >= rows ||
             currentCol < 0 || currentCol >= cols) {
@@ -47,7 +47,7 @@ function solve(args) {
     }
 
     function createBoard() {
-        let field = [];
+        const field = [];
         for (let row = 0; row < rows; row += 1) {
             field[row] = [];
             for (let col = 0; col < cols; col += 1) {

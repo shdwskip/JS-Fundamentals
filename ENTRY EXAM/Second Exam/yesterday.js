@@ -3,7 +3,7 @@ function solve(args) {
         month = +args[1],
         day = +args[2];
 
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     if (day == 1) {
         switch (month) {
@@ -25,7 +25,6 @@ function solve(args) {
             case 10: day = 30; month -= 1; break;
             case 11: day = 31; month -= 1; break;
             case 12: day = 30; month -= 1; break;
-
         }
         console.log(`${day}-${months[month - 1]}-${year}`);
     } else {

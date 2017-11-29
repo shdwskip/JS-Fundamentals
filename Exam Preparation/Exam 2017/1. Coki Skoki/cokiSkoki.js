@@ -3,15 +3,15 @@ function solve(args) {
         sequence = args.slice(1).map(Number),
         result = 0;
 
-    for (let i = 0; i < numbers; i += 1){
-        let currentNumber = sequence[i];
+    for (let i = 0; i < numbers; i += 1) {
+        const currentNumber = sequence[i];
         if (currentNumber % 2 == 0) {
             result += currentNumber;
             i += 1;
-        }else{
+        } else {
             if (i !== 0) {
                 result *= currentNumber;
-            }else{
+            } else {
                 result += currentNumber;
             }
         }
@@ -19,7 +19,7 @@ function solve(args) {
     }
     console.log(result);
 }
-let test1 = [
+const test1 = [
     '10',
     '1',
     '2',
@@ -30,13 +30,13 @@ let test1 = [
     '7',
     '8',
     '9',
-    '0'
+    '0',
   ];
   solve(test1);
 
   console.log('======================');
 
-  let test2 = [
+  const test2 = [
     '9',
     '9',
     '9',
@@ -46,6 +46,6 @@ let test1 = [
     '9',
     '9',
     '9',
-    '9'
+    '9',
   ];
   solve(test2);

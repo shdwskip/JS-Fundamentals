@@ -1,14 +1,13 @@
-function numberWord(arr){
-
-    let num = parseInt(arr[0]);
-    let numAsString = num.toString();
-    let numLen = numAsString.length;
+function numberWord(arr) {
+    const num = parseInt(arr[0]);
+    const numAsString = num.toString();
+    const numLen = numAsString.length;
     let numAsWord = '';
-    
+
 
     if (numLen == 1) {
         switch (numAsString) {
-            case '0': numAsWord = 'Zero'; break;            
+            case '0': numAsWord = 'Zero'; break;
             case '1': numAsWord = 'One'; break;
             case '2': numAsWord = 'Two'; break;
             case '3': numAsWord = 'Three'; break;
@@ -19,8 +18,7 @@ function numberWord(arr){
             case '8': numAsWord = 'Eight'; break;
             case '9': numAsWord = 'Nine'; break;
         }
-    }
-    else if (numLen == 2) {
+    } else if (numLen == 2) {
         if (numAsString[0] === '1') {
             switch (numAsString[1]) {
                 case '0': numAsWord = 'Ten'; break;
@@ -33,8 +31,8 @@ function numberWord(arr){
                 case '7': numAsWord = 'Seventeen'; break;
                 case '8': numAsWord = 'Eighteen'; break;
                 case '9': numAsWord = 'Nineteen'; break;
-            }    
-        }else{
+            }
+        } else {
             switch (numAsString[0]) {
                 case '2': numAsWord = 'Twenty'; break;
                 case '3': numAsWord = 'Thirty'; break;
@@ -59,10 +57,8 @@ function numberWord(arr){
                 default: break;
             }
         }
-     
-    }
-    else if (numLen == 3) {
-        switch (numAsString[0]) {            
+    } else if (numLen == 3) {
+        switch (numAsString[0]) {
             case '1': numAsWord = 'One hundred'; break;
             case '2': numAsWord = 'Two hundred'; break;
             case '3': numAsWord = 'Three hundred'; break;
@@ -71,7 +67,7 @@ function numberWord(arr){
             case '6': numAsWord = 'Six hundred'; break;
             case '7': numAsWord = 'Seven hundred'; break;
             case '8': numAsWord = 'Eight hundred'; break;
-            case '9': numAsWord = 'Nine hundred'; break;        
+            case '9': numAsWord = 'Nine hundred'; break;
         }
 
         if (numAsString[1] === '0') {
@@ -87,8 +83,7 @@ function numberWord(arr){
                 case '9': numAsWord += ' and nine'; break;
                 default: break;
             }
-        }
-        else if (numAsString[1] === '1') {
+        } else if (numAsString[1] === '1') {
             switch (numAsString[2]) {
                 case '0': numAsWord += ' and ten'; break;
                 case '1': numAsWord += ' and eleven'; break;
@@ -101,8 +96,7 @@ function numberWord(arr){
                 case '8': numAsWord += ' and eighteen'; break;
                 case '9': numAsWord += ' and nineteen'; break;
             }
-        }
-        else if (numAsString[2] === '0'){
+        } else if (numAsString[2] === '0') {
             switch (numAsString[1]) {
                 case '2': numAsWord += ' and twenty'; break;
                 case '3': numAsWord += ' and thirty'; break;
@@ -113,8 +107,7 @@ function numberWord(arr){
                 case '8': numAsWord += ' and eighty'; break;
                 case '9': numAsWord += ' and ninety'; break;
             }
-        }
-        else if (numAsString[2] !== '0') {
+        } else if (numAsString[2] !== '0') {
             switch (numAsString[1]) {
                 case '2': numAsWord += ' and twenty'; break;
                 case '3': numAsWord += ' and thirty'; break;
@@ -140,9 +133,9 @@ function numberWord(arr){
             }
         }
     }
-    console.log(numAsWord);    
+    console.log(numAsWord);
 }
 
-var arr = Array;
+const arr = Array;
 arr[0] = '410';
 numberWord(arr);

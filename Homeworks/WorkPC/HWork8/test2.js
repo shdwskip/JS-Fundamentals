@@ -1,6 +1,6 @@
 // Description
 
-// Write a function that extracts the content of a html page given as text. 
+// Write a function that extracts the content of a html page given as text.
 // The function should return anything that is in a tag, without the tags.
 
 
@@ -10,10 +10,10 @@ function solve(text) {
         trimmed = [],
         tag = true,
         test = text.toString();
-        result = test.replace(regex,'');
+        result = test.replace(regex, '');
     console.log(result);
 
-    for(let el in text){
+    for (const el in text) {
         trimmed.push(text[el].trim());
     }
 
@@ -21,11 +21,9 @@ function solve(text) {
         for (let j = 0, len = trimmed[i].length; j < len; j += 1) {
             if (trimmed[i][j] === '<') {
                 tag = true;
-            }
-            else if (trimmed[i][j] === '>') {
+            } else if (trimmed[i][j] === '>') {
                 tag = false;
-            }
-            else if (trimmed[i][j] !== '>' && !tag) {
+            } else if (trimmed[i][j] !== '>' && !tag) {
                 output += trimmed[i][j];
             }
         }
@@ -35,7 +33,7 @@ function solve(text) {
     console.log(output);
 }
 
-let arr = [
+const arr = [
    '<html>',
     '  <head>',
     '    <title>Sample site</title>',
@@ -47,6 +45,6 @@ let arr = [
     '    </div>',
     '    in body',
     '  </body>',
-    '</html>'
+    '</html>',
 ];
 solve(arr);

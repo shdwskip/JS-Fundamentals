@@ -1,11 +1,7 @@
-function isOddOrEven(value){
-    
-    if (value % 2 == 0){
+function isOddOrEven(value) {
+    if (value % 2 == 0) {
         console.log('even' + ' ' + value);
-
-    }
-    else{
+    } else {
         console.log('odd' + ' ' + value);
     }
-	
-};
+}

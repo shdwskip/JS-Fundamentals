@@ -12,7 +12,7 @@ function solve(args) {
             if (number[i] == '.' || number[i] == '-') {
                 continue;
             }
-            let digit = +number[i];
+            const digit = +number[i];
             temp += Math.abs(digit);
             if (temp > 9) {
                 number = temp.toString();
@@ -24,13 +24,12 @@ function solve(args) {
             number = temp.toString();
             console.log(number);
             break;
-        }else{
+        } else {
             if (temp < 10) {
                 console.log(temp);
             }
         }
     }
-
 }
 // solve(5);
 // console.log('==================');

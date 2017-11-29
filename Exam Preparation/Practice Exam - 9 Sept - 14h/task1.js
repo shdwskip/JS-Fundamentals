@@ -33,8 +33,6 @@ function solve(args) {
             iterations += 1;
         }
     }
-
-
 }
 
 solve(['909']);

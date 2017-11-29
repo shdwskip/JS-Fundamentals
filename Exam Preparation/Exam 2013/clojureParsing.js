@@ -1,9 +1,9 @@
 /* jshint esversion: 6 */
 function solve(input) {
     let finalResult;
-    let functions = [];
+    const functions = [];
     for (let i = 0; i < input.length; i += 1) {
-        let currentRow = input[i].trim();
+        const currentRow = input[i].trim();
         let inCommand = false;
         let inNestedCommand = false;
         let operator = '';
@@ -11,14 +11,14 @@ function solve(input) {
         let currentDigit = '';
         let currentFunctionName = '';
         let currentNewFunction = '';
-        let parameters = [];
+        const parameters = [];
         let nestedParameters = [];
         for (let j = 0; j < currentRow.length; j += 1) {
-            let currentSymbol = currentRow[j];
+            const currentSymbol = currentRow[j];
             if (currentSymbol === ' ' || currentSymbol == ')') {
                 if (currentFunctionName !== '') {
                     if (functions[currentFunctionName] || functions[currentFunctionName] == 0) {
-                        let funcResult = functions[currentFunctionName];
+                        const funcResult = functions[currentFunctionName];
                         if (inNestedCommand) {
                             nestedParameters.push(funcResult);
                         } else {
@@ -40,7 +40,7 @@ function solve(input) {
                 if (currentSymbol == ')' && currentNewFunction !== '') {
                     let result;
                     if (inNestedCommand) {
-                        result = calculate(nestedOperator, nestedParameters)
+                        result = calculate(nestedOperator, nestedParameters);
                     } else {
                         result = calculate(operator, parameters);
                     }
@@ -53,7 +53,7 @@ function solve(input) {
                     currentNewFunction = '';
                 }
                 if (inNestedCommand && currentSymbol == ')') {
-                    let nestedResult = calculate(nestedOperator, nestedParameters);
+                    const nestedResult = calculate(nestedOperator, nestedParameters);
                     parameters.push(nestedResult);
                     nestedOperator = '';
                     nestedParameters = [];
@@ -111,7 +111,7 @@ function solve(input) {
         if (symbol == ' ') {
             return false;
         }
-        return !isNaN(symbol); //symbol == Number(symbol);
+        return !isNaN(symbol); // symbol == Number(symbol);
     }
 
     function calculate(operator, parameters) {
@@ -140,5 +140,5 @@ solve([
     '(def myFunc 0)',
     '(def myNewFunc (+  myFunc  myFunc 2))',
     '(def MyFunc (* 3  myNewFunc))',
-    '(/   MyFunc  myFunc)'
+    '(/   MyFunc  myFunc)',
 ]);

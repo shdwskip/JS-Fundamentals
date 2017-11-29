@@ -1,32 +1,31 @@
 function makePerson(firstname, lastname, age) {
-    let obj = {
+    const obj = {
         firstname: firstname,
         lastname: lastname,
         age: age,
-        gender: gen()
-    }
+        gender: gen(),
+    };
 
     function gen() {
-        let a = Math.random();
+        const a = Math.random();
         if (a >= 0.5) {
             return 'male';
         }
-        else {
+
             return 'female';
-        }
     }
     return obj;
 }
-let people = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(function (_, i) {
+const people = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(function(_, i) {
     return makePerson('Person' + i, 'Ivanov' + i, Math.floor(Math.random() * 100));
-})
+});
 
 console.log(people);
 
 
 function peopleofAge(number) {
     return number.age >= 18;
-};
+}
 
 if (people.every(peopleofAge)) {
     console.log('All people are of age');
@@ -34,7 +33,7 @@ if (people.every(peopleofAge)) {
     console.log('Teens in the list');
 }
 
-//---------ECMAS 6------------------------
+// ---------ECMAS 6------------------------
 // function peopleOfAge() {
 
 //     if (people.every(n => n.age > 18)) {
@@ -45,41 +44,41 @@ if (people.every(peopleofAge)) {
 // }
 // let test = peopleOfAge();
 // console.log(test);
-//---------------------------------------
+// ---------------------------------------
 
 function underAge(number) {
     return number.age < 18;
 }
 
-let teens = people.filter(underAge);
+const teens = people.filter(underAge);
 console.log(teens);
 
 function females(gen) {
-    return gen.gender == 'female'
+    return gen.gender == 'female';
 }
 
-let girls = people.filter(females);
+const girls = people.filter(females);
 let years = 0;
 
-girls.forEach(girl => years += girl.age);
-let avgYears = years / girls.length;
+girls.forEach((girl) => years += girl.age);
+const avgYears = years / girls.length;
 
 console.log('================');
 
 console.log(girls);
 console.log(`Average age of all girls is: ${avgYears.toFixed(2)}`);
 
-let boys = people.filter(boy => boy.gender == 'male');
+const boys = people.filter((boy) => boy.gender == 'male');
 console.log('=======================================================================');
 console.log(boys);
 
-boys.sort(function (a, b) {
+boys.sort(function(a, b) {
     return a.age - b.age;
-})
+});
 
-//here the 'boys' array is sorted already and find returns the first element, which is the youngest boy...
-let youngestBoy = boys.find((boy) => {
+// here the 'boys' array is sorted already and find returns the first element, which is the youngest boy...
+const youngestBoy = boys.find((boy) => {
     return boy;
-})
+});
 console.log('*************************************');
 console.log(`${youngestBoy.firstname} ${youngestBoy.lastname}`);

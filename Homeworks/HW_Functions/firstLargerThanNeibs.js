@@ -6,7 +6,7 @@ function main(arr) {
     compare(seq);
 
     function compare() {
-        for(let i = 1; i < len - 1; i += 1){
+        for (let i = 1; i < len - 1; i += 1) {
             if (seq[i-1] < seq[i] && seq[i] > seq[i+1]) {
                 console.log(i);
                 count += 1;
@@ -20,5 +20,5 @@ function main(arr) {
     }
 }
 
-let arr = ['6', '-26 -29 -28 31 31 27'];
+const arr = ['6', '-26 -29 -28 31 31 27'];
 main(arr);

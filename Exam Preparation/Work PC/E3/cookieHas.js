@@ -18,32 +18,31 @@ function solve(args) {
             }
             selectors.push(
                 {
-                    "selector": selector,
-                    "parent": current,
-                    "props": []
+                    'selector': selector,
+                    'parent': current,
+                    'props': [],
                 }
-            )
+            );
             current = selectors[selectors.length - 1];
-        }
-        else if (isProperty(line)) {
+        } else if (isProperty(line)) {
             line = line.trim();
             line = line.substr(0, line.length - 1).trim();
-            let propValArr = line.split(':').map(x => x.trim());
-            let propValPair = {
-                "property": propValArr[0],
-                "value": propValArr[1]
-            }
+            const propValArr = line.split(':').map((x) => x.trim());
+            const propValPair = {
+                'property': propValArr[0],
+                'value': propValArr[1],
+            };
             current.props.push(propValPair);
         } else {
             if (current) {
-                current = current.parent
+                current = current.parent;
             }
         }
     }
 
-    for (let selector of selectors) {
+    for (const selector of selectors) {
         console.log(`${selector.selector} {`);
-        for (let pair of selector.props) {
+        for (const pair of selector.props) {
             console.log(`  ${pair.property}: ${pair.value};`);
         }
         console.log('}');
@@ -51,11 +50,11 @@ function solve(args) {
 
 
     function isSelector(line) {
-        return line.indexOf('{') >= 0
+        return line.indexOf('{') >= 0;
     }
 
     function isProperty(line) {
-        return line.indexOf(':') >= 0
+        return line.indexOf(':') >= 0;
     }
 }
 solve(['#the-big-b{',

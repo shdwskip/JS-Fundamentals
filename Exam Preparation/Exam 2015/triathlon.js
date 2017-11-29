@@ -6,10 +6,10 @@ function solve(params) {
         input = params[0],
         offset = +params[1],
         CONSTANTS = {
-            ALPHABET: 'abcdefghijklmnopqrstuvwxyz'
+            ALPHABET: 'abcdefghijklmnopqrstuvwxyz',
         };
-    let compressedText = compressText(input);
-    let encryptedText = encryptText(compressedText, offset);
+    const compressedText = compressText(input);
+    const encryptedText = encryptText(compressedText, offset);
 
     transformText(encryptedText);
     console.log(sum);
@@ -29,14 +29,11 @@ function solve(params) {
 
             if (counter > 2) {
                 result += counter + currentSymbol;
-            }
-            else if (counter == 2) {
+            } else if (counter == 2) {
                 result += currentSymbol + currentSymbol;
-            }
-            else if (counter == 1) {
+            } else if (counter == 1) {
                 result += currentSymbol;
             }
-
         }
         return result;
     }
@@ -46,18 +43,18 @@ function solve(params) {
             cipherLetterCode = 0;
 
         for (let i = 0; i < string.length; i += 1) {
-            let currentSymbol = string[i];
+            const currentSymbol = string[i];
             if (isFinite(currentSymbol)) {
                 result += currentSymbol;
             } else {
-                let currentLetterCode = currentSymbol.charCodeAt();
-                //shift alphabet with offset
+                const currentLetterCode = currentSymbol.charCodeAt();
+                // shift alphabet with offset
                 cipherLetterCode = currentLetterCode + CONSTANTS.ALPHABET.length - offset;
                 // if cipher letter code is after letter 'z'
                 if (cipherLetterCode > 122) {
-                    cipherLetterCode -= CONSTANTS.ALPHABET.length; //decrease with alphabet length
+                    cipherLetterCode -= CONSTANTS.ALPHABET.length; // decrease with alphabet length
                 }
-                let codeNumber = currentLetterCode ^ cipherLetterCode;
+                const codeNumber = currentLetterCode ^ cipherLetterCode;
                 result += codeNumber;
             }
         }
@@ -66,7 +63,7 @@ function solve(params) {
 
     function transformText(string) {
         for (let i = 0; i < string.length; i += 1) {
-            let digit = +string[i];
+            const digit = +string[i];
             if (digit % 2 == 0) {
                 sum += digit;
             } else {
@@ -74,10 +71,9 @@ function solve(params) {
             }
         }
     }
-
 }
 
 solve([
     'xxxxbbbccccaa',
-    '8'
+    '8',
 ]);

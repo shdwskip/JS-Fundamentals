@@ -13,4 +13,4 @@ function solve(args) {
 }
 
 
-solve(["7"]);
+solve(['7']);

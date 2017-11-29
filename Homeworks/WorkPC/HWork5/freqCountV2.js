@@ -1,4 +1,4 @@
-//different input format
+// different input format
 
 function solve(arr) {
     let len = +arr.shift(),
@@ -9,7 +9,7 @@ function solve(arr) {
     appCount(arr);
 
     function appCount() {
-        for(let i = 0; i < seq.length; i += 1){
+        for (let i = 0; i < seq.length; i += 1) {
             if (seq[i] === num) {
                 count += 1;
             }
@@ -18,5 +18,5 @@ function solve(arr) {
     }
 }
 
-let arr = ['8', '28 6 21 6 -7856 73 73 -56', '73'];
+const arr = ['8', '28 6 21 6 -7856 73 73 -56', '73'];
 solve(arr);

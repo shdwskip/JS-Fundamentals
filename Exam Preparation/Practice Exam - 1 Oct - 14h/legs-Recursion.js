@@ -1,9 +1,9 @@
 function combinationSum(candidates, target) {
-    var result = [];
+    const result = [];
 
     if (candidates == null || candidates.length == 0) return result;
 
-    var current = [];
+    const current = [];
     candidates.sort();
 
     combinationSumHelper(candidates, target, 0, current, result);
@@ -13,14 +13,15 @@ function combinationSum(candidates, target) {
 
 function combinationSumHelper(candidates, target, j, curr, result) {
     if (target == 0) {
-        var temp = curr.slice();
+        const temp = curr.slice();
         result.push(temp);
         return;
     }
 
-    for (var i = j; i < candidates.length; i++) {
-        if (target < candidates[i])
-            return;
+    for (let i = j; i < candidates.length; i++) {
+        if (target < candidates[i]) {
+return;
+}
         curr.push(candidates[i]);
         combinationSumHelper(candidates, target - candidates[i], i, curr, result);
         curr.pop();

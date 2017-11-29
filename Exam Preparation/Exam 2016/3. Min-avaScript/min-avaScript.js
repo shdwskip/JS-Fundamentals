@@ -12,23 +12,22 @@ function solve(params) {
     for (let line of params) {
         line = line.trim();
         if (line[0] === prioritySymbol) {
-            let newPriority = parseInt(line.substr(1).trim());
+            const newPriority = parseInt(line.substr(1).trim());
             if (inSelector) {
                 localPriority = newPriority;
             } else {
                 globalPriority = newPriority;
             }
-        }
-        else if (line[0] === closeSelector) {
+        } else if (line[0] === closeSelector) {
             inSelector = false;
         } else {
-            let openSelectorIndex = line.indexOf(openSelector);
+            const openSelectorIndex = line.indexOf(openSelector);
             if (openSelectorIndex < 0) {
-                let splitted = line.split(/[:;]/g);
-                let property = splitted[0].trim();
-                let value = splitted[1].trim();
+                const splitted = line.split(/[:;]/g);
+                const property = splitted[0].trim();
+                const value = splitted[1].trim();
                 let currentPriority = localPriority;
-                let prioritySymbolIndex = splitted[2].indexOf(prioritySymbol);
+                const prioritySymbolIndex = splitted[2].indexOf(prioritySymbol);
 
                 if (prioritySymbolIndex !== -1) {
                     currentPriority = parseInt(splitted[2].substr(prioritySymbolIndex + 1).trim());
@@ -37,21 +36,20 @@ function solve(params) {
                 if (!selectors.hasOwnProperty(property)) {
                     selectors[property] = {
                         value: value,
-                        priority: currentPriority
+                        priority: currentPriority,
                     };
                 } else {
-                    let obj = selectors[property];
+                    const obj = selectors[property];
                     if (obj.priority < currentPriority) {
                         obj.value = value;
                         obj.priority = currentPriority;
                     }
                 }
-
             } else {
                 inSelector = true;
-                let splitted = line.split(openSelector);
-                let selectorName = splitted[0].trim();
-                let prioritySymbolIndex = line.indexOf(prioritySymbol, openSelectorIndex);
+                const splitted = line.split(openSelector);
+                const selectorName = splitted[0].trim();
+                const prioritySymbolIndex = line.indexOf(prioritySymbol, openSelectorIndex);
                 localPriority = globalPriority;
 
                 if (!bindings.hasOwnProperty(selectorName)) {
@@ -65,18 +63,18 @@ function solve(params) {
             }
         }
     }
-    for (let selector in bindings) {
+    for (const selector in bindings) {
         selectors = bindings[selector];
-        for (let key in selectors) {
-            let value = selectors[key].value;
-            let line = `${selector} { ${key}: ${value}; }`;
+        for (const key in selectors) {
+            const value = selectors[key].value;
+            const line = `${selector} { ${key}: ${value}; }`;
             result.push(line);
         }
     }
     console.log(result.sort().join('\n'));
 }
 
-let test2 = [
+const test2 = [
     'enthusiasm { @5',
     '  ap-percept-ion:buying;',
     '  @2',
@@ -106,7 +104,7 @@ let test2 = [
     'enthusiasm { @15',
     '  houston:NkR99XZ;',
     '  ap-percept-ion:aPQG;',
-    '}'
+    '}',
 ];
 // Output:
 // enthusiasm { ap-percept-ion: aPQG; }

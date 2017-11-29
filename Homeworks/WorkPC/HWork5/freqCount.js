@@ -1,5 +1,5 @@
 function solve(arr) {
-    let a = arr[0].split('\n'), 
+    let a = arr[0].split('\n'),
         len = +a.shift(),
         num = +a.pop(),
         count = 0,
@@ -8,7 +8,7 @@ function solve(arr) {
     appCount(arr);
 
     function appCount() {
-        for(let i = 0; i < seq.length; i += 1){
+        for (let i = 0; i < seq.length; i += 1) {
             if (seq[i] === num) {
                 count += 1;
             }
@@ -17,5 +17,5 @@ function solve(arr) {
     }
 }
 
-let arr = ['8\n28 6 21 6 -7856 73 73 -56\n73'];
+const arr = ['8\n28 6 21 6 -7856 73 73 -56\n73'];
 solve(arr);

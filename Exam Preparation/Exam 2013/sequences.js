@@ -1,9 +1,9 @@
 /* jshint esversion: 6 */
 
 function solve(args) {
-    let totalNumbers = +args[0];
+    const totalNumbers = +args[0];
     let answer = 0;
-    let numbersArray = args.slice(1).map(Number);
+    const numbersArray = args.slice(1).map(Number);
 
     for (let i = 0; i < numbersArray.length; i += 1) {
         if (numbersArray[i] <= numbersArray[i + 1]) {
@@ -25,4 +25,4 @@ solve([
     '5',
     '7',
     '7',
-    '6']);    
+    '6']);

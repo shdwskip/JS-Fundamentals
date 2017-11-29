@@ -11,7 +11,7 @@ function solve(args) {
 
     function assignValues(catList, usedValues) {
         let currentValue = 0;
-        catList.forEach(function (item) {
+        catList.forEach(function(item) {
             if (item.value < 0) {
                 while (usedValues[currentValue]) {
                     currentValue += 1;
@@ -23,14 +23,13 @@ function solve(args) {
         });
     }
 
-    args.forEach(function (line) {
+    args.forEach(function(line) {
         line = line.trim();
         if (line === '</>') {
             if (!shared) {
                 assignValues(catList, usedValues);
             }
-        }
-        else if (line[0] === '<') {
+        } else if (line[0] === '<') {
             shared = line[1] === '@';
             category = line.replace(/[<>@]/g, '');
             catList = [];
@@ -47,10 +46,10 @@ function solve(args) {
                     usedValues[value] = true;
                 }
             }
-            let item = {
+            const item = {
                 name: name,
                 value: value,
-                category: category
+                category: category,
             };
             if (shared) {
                 sharedCatList.push(item);
@@ -65,7 +64,7 @@ function solve(args) {
     console.log(result.sort().join('\n'));
 }
 
-let arr = [
+const arr = [
     '<@Languages>',
     '   CSharp;',
     '   JavaScript;',
@@ -81,7 +80,7 @@ let arr = [
     '<@Insects>',
     '   Ant;',
     '   Mosquito = 2;',
-    '</>'
+    '</>',
 ];
 solve(arr);
 

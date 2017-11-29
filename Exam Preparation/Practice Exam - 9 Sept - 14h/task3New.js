@@ -1,10 +1,10 @@
 function solve(args) {
-    let productsCount = +args[0];
-    let listsCount = +args[productsCount + 1];
-    let thingsToBuy = args.slice(productsCount + 2);
-    let pricesList = {};
+    const productsCount = +args[0];
+    const listsCount = +args[productsCount + 1];
+    const thingsToBuy = args.slice(productsCount + 2);
+    const pricesList = {};
 
-    //fill pricesList   
+    // fill pricesList
     for (let prodIndex = 1; prodIndex < productsCount + 1; prodIndex += 1) {
         let prices = args[prodIndex].split(' '),
             currPrice = Number(prices.pop()),
@@ -16,13 +16,13 @@ function solve(args) {
     //     .map(x => x.split(', '));
 
     for (let i = 0; i < listsCount; i += 1) {
-        let line = thingsToBuy[i].split(', ');
+        const line = thingsToBuy[i].split(', ');
         let total = 0;
 
         for (let j = 0; j < line.length; j += 1) {
-            let element = line[j].split(' ');
+            const element = line[j].split(' ');
             let quantity = 1;
-            let tempQuantity = parseFloat(element[0]);
+            const tempQuantity = parseFloat(element[0]);
             let product;
             if (tempQuantity >= 0) {
                 quantity = tempQuantity;
@@ -45,19 +45,19 @@ function solve(args) {
     // }
 }
 
-let arr = [
-    "5",
-    "milk 1.2",
-    "orange juice 2.9",
-    "icecream 2",
-    "cake 5.1",
-    "beer 1.2",
-    "5",
-    "2 beer, 3 orange juice",
-    "5 orange juice, 3 orange juice, orange juice, orange juice",
-    "milk, cake",
-    "icecream, 2 cake",
-    "icecream, icecream, 3 icecream"
+const arr = [
+    '5',
+    'milk 1.2',
+    'orange juice 2.9',
+    'icecream 2',
+    'cake 5.1',
+    'beer 1.2',
+    '5',
+    '2 beer, 3 orange juice',
+    '5 orange juice, 3 orange juice, orange juice, orange juice',
+    'milk, cake',
+    'icecream, 2 cake',
+    'icecream, icecream, 3 icecream',
 ];
 // let arr = [
 //     "10",

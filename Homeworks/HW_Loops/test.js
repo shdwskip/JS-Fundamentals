@@ -1,12 +1,12 @@
-var numberStr = '11';
-var number = +numberStr;
-var divider = 2;
-var maxDivider = Math.sqrt(number);
-var prime = true;
+const numberStr = '11';
+const number = +numberStr;
+let divider = 2;
+const maxDivider = Math.sqrt(number);
+let prime = true;
 while (prime && (divider <= maxDivider)) {
 if (!(number % divider)) {
 prime = false;
 }
 divider++;
 }
-console.log('output-tb',prime);
+console.log('output-tb', prime);

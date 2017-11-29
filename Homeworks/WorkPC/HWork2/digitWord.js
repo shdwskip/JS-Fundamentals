@@ -1,10 +1,9 @@
-function digitWord(arr){
+function digitWord(arr) {
+    const digit = arr[0];
 
-    let digit = arr[0];
-     
     if (digit >= 0 && digit <= 9) {
         switch (digit) {
-            case '0': console.log('zero'); break;            
+            case '0': console.log('zero'); break;
             case '1': console.log('one'); break;
             case '2': console.log('two'); break;
             case '3': console.log('three'); break;
@@ -17,13 +16,11 @@ function digitWord(arr){
 
             default: console.log('not a digit'); break;
         }
-        
-    }else{
+    } else {
         console.log('not a digit');
     }
-    
 }
 
-var arr = Array;
+const arr = Array;
 arr[0] = '1';
 digitWord(arr);

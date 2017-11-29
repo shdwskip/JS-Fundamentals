@@ -1,21 +1,21 @@
 function solve(args) {
     let sequence = args[0].split(' ').map(Number),
         len = sequence.length;
-    let secondSequence = [];
+    const secondSequence = [];
     let result = 0;
 
-    for (let i = 1; i < len; i += 1){
-        let currentNumber = Math.abs(sequence[i] - sequence[i-1]);
+    for (let i = 1; i < len; i += 1) {
+        const currentNumber = Math.abs(sequence[i] - sequence[i-1]);
         if (currentNumber % 2 !== 0) {
             secondSequence.push(currentNumber);
-        }else{
+        } else {
             i += 1;
             secondSequence.push(currentNumber);
         }
     }
-    
-    let len2 = secondSequence.length;
-    for (let i = 0; i < len2; i += 1){
+
+    const len2 = secondSequence.length;
+    for (let i = 0; i < len2; i += 1) {
         if (secondSequence[i] % 2 == 0) {
             result += secondSequence[i];
         }

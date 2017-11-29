@@ -5,7 +5,7 @@ function solve(args) {
         tags = [],
         result = [];
 
-    for (var i = 0; i < text.length; i++) {
+    for (let i = 0; i < text.length; i++) {
         if (text[i] === '<') {
             inTag = true;
         } else if (text[i] === '>' && inTag) {
@@ -36,8 +36,8 @@ function solve(args) {
     }
 
     console.log(result.join(''));
-    //console.log(tags);
+    // console.log(tags);
 }
 
-let arr = ['We are <upcase><orgcase>liViNg</orgcase></upcase> in a <upcase>yellow submarine</upcase>. We <orgcase>doN\'t</orgcase> have <lowcase>anything</lowcase> else.'];
+const arr = ['We are <upcase><orgcase>liViNg</orgcase></upcase> in a <upcase>yellow submarine</upcase>. We <orgcase>doN\'t</orgcase> have <lowcase>anything</lowcase> else.'];
 solve(arr);

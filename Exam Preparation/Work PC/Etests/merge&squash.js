@@ -5,23 +5,23 @@ function solve(args) {
         squashArray = [];
 
     for (let i = 0; i < len - 1; i += 1) {
-        let number1 = numbers[i];
-        let number2 = numbers[i + 1];
-        let merged = mergeNumbers(number1, number2);
+        const number1 = numbers[i];
+        const number2 = numbers[i + 1];
+        const merged = mergeNumbers(number1, number2);
         mergeArray.push(merged);
     }
     console.log(mergeArray.join(' '));
 
     for (let i = 0; i < len - 1; i += 1) {
-        let number1 = numbers[i];
-        let number2 = numbers[i + 1];
-        let squashed = squashNumbers(number1, number2);
+        const number1 = numbers[i];
+        const number2 = numbers[i + 1];
+        const squashed = squashNumbers(number1, number2);
         squashArray.push(squashed);
     }
     console.log(squashArray.join(' '));
 
     function mergeNumbers(number1, number2) {
-        let mergedNumber = number1.substr(1) + number2.substring(0, 1);
+        const mergedNumber = number1.substr(1) + number2.substring(0, 1);
         return mergedNumber;
     }
 
@@ -29,15 +29,13 @@ function solve(args) {
         let middleSum = parseInt(number1.substr(1)) + parseInt(number2.substring(0, 1));
         if (middleSum > 9) {
             middleSum = '' + middleSum;
-            let middleNumber = middleSum.substr(1);
-            let squashedNumber = number1.substring(0, 1) + middleNumber + number2.substr(1);
-            return squashedNumber;
-
-        } else {
-            middleSum.toString();
-            let squashedNumber = number1.substring(0, 1) + middleSum + number2.substr(1);
+            const middleNumber = middleSum.substr(1);
+            const squashedNumber = number1.substring(0, 1) + middleNumber + number2.substr(1);
             return squashedNumber;
         }
+            middleSum.toString();
+            const squashedNumber = number1.substring(0, 1) + middleSum + number2.substr(1);
+            return squashedNumber;
     }
 }
 solve(['11',

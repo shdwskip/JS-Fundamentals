@@ -5,27 +5,27 @@ function solve(args) {
         startPositions = args[1].split(/[; ]/g).map(Number),
         instructions = args.slice(2, args.length);
 
-    let trollW = {
+    const trollW = {
         row: startPositions[0],
         col: startPositions[1],
-        trapped: false
+        trapped: false,
     };
 
-    let trollN = {
+    const trollN = {
         row: startPositions[2],
         col: startPositions[3],
-        trapped: false
+        trapped: false,
     };
 
-    let princess = {
+    const princess = {
         row: startPositions[4],
         col: startPositions[5],
-        trapped: false
+        trapped: false,
     };
 
-    let traps = [];
+    const traps = [];
     for (let i = 0; i < rows; i += 1) {
-        let row = new Array(cols);
+        const row = new Array(cols);
         row.fill(false);
         traps.push(row);
     }
@@ -38,11 +38,9 @@ function solve(args) {
                 unitToMove;
             if (unit[1][0] === 'L') {
                 unitToMove = princess;
-            }
-            else if (unit[1][0] === 'W') {
+            } else if (unit[1][0] === 'W') {
                 unitToMove = trollW;
-            }
-            else if (unit[1][0] === 'N') {
+            } else if (unit[1][0] === 'N') {
                 unitToMove = trollN;
             }
 
@@ -52,14 +50,11 @@ function solve(args) {
 
             if (unit[2] === 'u' && unitToMove.row > 0) {
                 unitToMove.row -= 1;
-            }
-            else if (unit[2] === 'd' && unitToMove.row < rows - 1) {
+            } else if (unit[2] === 'd' && unitToMove.row < rows - 1) {
                 unitToMove.row += 1;
-            }
-            else if (unit[2] === 'l' && unitToMove.col > 0) {
+            } else if (unit[2] === 'l' && unitToMove.col > 0) {
                 unitToMove.col -= 1;
-            }
-            else if (unit[2] === 'r' && unitToMove.col < cols - 1) {
+            } else if (unit[2] === 'r' && unitToMove.col < cols - 1) {
                 unitToMove.col += 1;
             }
 
@@ -67,34 +62,28 @@ function solve(args) {
                 trollW.trapped = false;
                 trollN.trapped = false;
                 traps[trollW.row][trollW.col] = false;
-            }
-            else if (unit[1][0] !== 'L' && traps[unitToMove.row][unitToMove.col]) {
+            } else if (unit[1][0] !== 'L' && traps[unitToMove.row][unitToMove.col]) {
                 unitToMove.trapped = true;
             }
 
             if (princess.row === rows - 1 && princess.col === cols - 1) {
                 console.log(`Lsjtujzbo is saved! ${trollW.row} ${trollW.col} ${trollN.row} ${trollN.col}`);
-            }
-            else if (trollW.trapped && trollN.trapped) {
+            } else if (trollW.trapped && trollN.trapped) {
                 console.log(`Lsjtujzbo is saved! ${trollW.row} ${trollW.col} ${trollN.row} ${trollN.col}`);
-            }
-            else if (trollW.row === princess.row && trollW.col === princess.col) {
+            } else if (trollW.row === princess.row && trollW.col === princess.col) {
                 console.log(`The trolls caught Lsjtujzbo at ${princess.row} ${princess.col}`);
-            }
-            else if (trollN.row === princess.row && trollN.col === princess.col) {
+            } else if (trollN.row === princess.row && trollN.col === princess.col) {
                 console.log(`The trolls caught Lsjtujzbo at ${princess.row} ${princess.col}`);
-            }
-            else if (Math.abs(princess.row - trollW.row) < 2 && Math.abs(princess.col - trollW.col) < 2) {
+            } else if (Math.abs(princess.row - trollW.row) < 2 && Math.abs(princess.col - trollW.col) < 2) {
                 console.log(`The trolls caught Lsjtujzbo at ${princess.row} ${princess.col}`);
-            }
-            else if (Math.abs(princess.row - trollN.row) < 2 && Math.abs(princess.col - trollN.col) < 2) {
+            } else if (Math.abs(princess.row - trollN.row) < 2 && Math.abs(princess.col - trollN.col) < 2) {
                 console.log(`The trolls caught Lsjtujzbo at ${princess.row} ${princess.col}`);
             }
         }
     }
 }
 
-let arr = [
+const arr = [
     '8 8',
     '1 3;0 3;5 5',
     'mv Lsjtujzbo l',
@@ -122,6 +111,6 @@ let arr = [
     'mv Nbslbub r',
     'mv Nbslbub d',
     'mv Nbslbub d',
-    'mv Nbslbub d'
+    'mv Nbslbub d',
 ];
 solve(arr);

@@ -24,19 +24,19 @@ function solve(args) {
     console.log(answer);
 }
 
-let test1 = [
+const test1 = [
     110,
     13,
     15,
     17];
 
-let test2 = [
+const test2 = [
     20,
     11,
     200,
     300];
 
-let test3 = [
+const test3 = [
     110,
     19,
     29,

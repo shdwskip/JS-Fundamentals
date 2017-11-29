@@ -1,10 +1,10 @@
 function solve(input) {
     let finalResult;
-    let functions = [];
+    const functions = [];
     let print = false;
 
     for (let i = 0; i < input.length; i += 1) {
-        let currentRow = input[i].trim();
+        const currentRow = input[i].trim();
         let command = '';
         let currentDigit = '';
         let currentFunction = '';
@@ -14,7 +14,7 @@ function solve(input) {
         let lastRow = false;
 
         for (let j = 0; j < currentRow.length; j += 1) {
-            let currentSymbol = currentRow[j];
+            const currentSymbol = currentRow[j];
 
             if (currentFunction == 'def' && currentSymbol == ' ') {
                 currentFunction = '';
@@ -22,11 +22,11 @@ function solve(input) {
             }
             if (!isNumber(currentSymbol) && !isLetter(currentSymbol) &&
                 functions[currentFunction] || functions[currentFunction] == 0) {
-                if (typeof (functions[currentFunction]) == 'object') {
+                if (typeof (functions[currentFunction]) === 'object') {
                     if (parameters.length == 0) {
                         parameters = functions[currentFunction].slice();
                     } else {
-                        let len = functions[currentFunction].length;
+                        const len = functions[currentFunction].length;
                         for (let x = 0; x < len; x += 1) {
                             parameters.push(functions[currentFunction][x]);
                         }
@@ -47,7 +47,6 @@ function solve(input) {
             if ((currentFunction == 'sum' || currentFunction == 'avg' ||
                 currentFunction == 'min' || currentFunction == 'max') &&
                 !isLetter(currentSymbol)) {
-
                 command = currentFunction;
                 currentFunction = '';
                 if (currentNewFunction !== '') {
@@ -90,20 +89,18 @@ function solve(input) {
                     }
                     continue;
                 }
-
             }
             if (functions[currentFunction] && currentNewFunction !== '' &&
                 (currentSymbol == ' ' || currentSymbol == ']')) {
-
                 functions[currentNewFunction] = functions[currentFunction];
                 parameters = functions[currentNewFunction].slice();
             }
             if (currentSymbol == ']' && command !== '') {
                 if (i == input.length - 1) {
-                    //lastRow = true;
+                    // lastRow = true;
                     break;
                 }
-                let result = calculate(command, parameters);
+                const result = calculate(command, parameters);
                 if (currentNewFunction !== '') {
                     functions[currentNewFunction] = result;
                 }
@@ -140,7 +137,7 @@ function solve(input) {
     }
 
     function isLetter(symbol) {
-        let letter = symbol.toLowerCase();
+        const letter = symbol.toLowerCase();
         if (letter.charCodeAt(0) - 97 >= 0) {
             return true;
         }
@@ -168,7 +165,7 @@ function solve(input) {
     }
 }
 
-let test1 = [
+const test1 = [
     'def maxy max[100, 5000, 4,2,1]',
     'def summary1 [0]',
     'def summary11 avg[summary1,maxy]',

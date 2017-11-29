@@ -1,22 +1,22 @@
 function solve(args) {
     let i, j, k;
-    let n = +args[0];
-    let model = {};
-    let m = +args[n + 1];
-    let result = [];
-    let modelOpenTag = '<nk-model>';
-    let modelCloseTag = '</nk-model>';
-    let templateOpenTag = '<nk-template name="';
-    let templateCloseTag = '</nk-template>';
-    let templateRendering = '<nk-template render="';
-    let conditionOpenTag = '<nk-if condition="';
-    let conditionCloseTag = '</nk-if>';
-    let escapeOpen = '{{';
-    let escapeClose = '}}';
+    const n = +args[0];
+    const model = {};
+    const m = +args[n + 1];
+    const result = [];
+    const modelOpenTag = '<nk-model>';
+    const modelCloseTag = '</nk-model>';
+    const templateOpenTag = '<nk-template name="';
+    const templateCloseTag = '</nk-template>';
+    const templateRendering = '<nk-template render="';
+    const conditionOpenTag = '<nk-if condition="';
+    const conditionCloseTag = '</nk-if>';
+    const escapeOpen = '{{';
+    const escapeClose = '}}';
     let currentModel = '';
     let currentTemplateName = '';
     let currentTemplateContent = [];
-    let allTemplates = {};
+    const allTemplates = {};
     let inModel = false;
     let escaped = false;
     let inTemplate = false;
@@ -25,17 +25,15 @@ function solve(args) {
 
 
     for (i = 0; i < n; i += 1) {
-        let keyValuePair = args[i + 1].split('-');
-        let key = keyValuePair[0];
+        const keyValuePair = args[i + 1].split('-');
+        const key = keyValuePair[0];
         let value = keyValuePair[1];
 
         if (value == 'true') {
             value = true;
-        }
-        else if (value == 'false') {
+        } else if (value == 'false') {
             value = false;
-        }
-        else if (value.indexOf(';') > - 1) {
+        } else if (value.indexOf(';') > - 1) {
             value = value.split(';');
         }
         model[key] = value;
@@ -50,7 +48,7 @@ function solve(args) {
             currentTemplateContent.push('\n');
         }
         for (k = 0; k < currentLine.length; k += 1) {
-            let currentSymbol = currentLine[k];
+            const currentSymbol = currentLine[k];
 
             if (checkForCommand(currentLine, escapeOpen)) {
                 escaped = true;
@@ -72,7 +70,7 @@ function solve(args) {
             }
             // check for if start
             if (checkForCommand(currentLine, conditionOpenTag)) {
-                let currentCondition = currentLine.split('"')[1];
+                const currentCondition = currentLine.split('"')[1];
                 conditionStatement = true;
                 if (!model[currentCondition]) {
                     render = false;
@@ -81,7 +79,7 @@ function solve(args) {
                 }
                 break;
             }
-            //check for condition end
+            // check for condition end
             if (checkForCommand(currentLine, conditionCloseTag)) {
                 render = true;
                 skipNewLine = true;
@@ -89,8 +87,8 @@ function solve(args) {
             }
             // check for template rendering
             if (checkForCommand(currentLine, templateRendering)) {
-                let templateToRender = currentLine.split('"')[1];
-                let templateContentToRender = allTemplates[templateToRender];
+                const templateToRender = currentLine.split('"')[1];
+                const templateContentToRender = allTemplates[templateToRender];
                 if (render) {
                     result.push(templateContentToRender);
                 }
@@ -118,7 +116,7 @@ function solve(args) {
                 currentTemplateContent.push(currentSymbol);
                 continue;
             }
-            //check if model tag is opened
+            // check if model tag is opened
             if (checkForCommand(currentLine, modelOpenTag)) {
                 inModel = true;
                 k += modelOpenTag.length - 1;
@@ -127,7 +125,7 @@ function solve(args) {
             // check if model rendering ends
             if (inModel && checkForCommand(currentLine, modelCloseTag)) {
                 inModel = false;
-                //console.log(currentModel);
+                // console.log(currentModel);
                 if (model[currentModel] && render) {
                     result.push(model[currentModel]);
                 }
@@ -135,7 +133,7 @@ function solve(args) {
                 k += modelCloseTag.length - 1;
                 continue;
             }
-            //check if in model
+            // check if in model
             if (inModel) {
                 currentModel += currentSymbol;
                 continue;

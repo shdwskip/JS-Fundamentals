@@ -1,17 +1,17 @@
 /* jshint esversion: 6 */
 
 function solve(args) {
-    let dimensions = args[0].split(' ').map(Number);
+    const dimensions = args[0].split(' ').map(Number);
     let rows = dimensions[0],
         cols = dimensions[1],
         totalJumps = dimensions[2],
         board = createBoard();
 
-    let startPosition = args[1].split(' ').map(Number);
+    const startPosition = args[1].split(' ').map(Number);
     let currentRow = startPosition[0],
         currentCol = startPosition[1];
 
-    let jumps = args.slice(2).map(x => x.split(' ').map(Number));
+    const jumps = args.slice(2).map((x) => x.split(' ').map(Number));
     let sumOfNumbers = 0;
     let numberOfJumps = 0;
     let escaped = false;
@@ -21,7 +21,6 @@ function solve(args) {
         while (true) {
             if (currentRow < 0 || currentRow >= rows ||
                 currentCol < 0 || currentCol >= cols) {
-
                 escaped = true;
                 break;
             }
@@ -34,7 +33,7 @@ function solve(args) {
             numberOfJumps += 1;
             board[currentRow][currentCol] = 'X';
 
-            let currentJump = jumps[jumpsIndex++];
+            const currentJump = jumps[jumpsIndex++];
             if (jumpsIndex >= jumps.length) {
                 jumpsIndex = 0;
             }
@@ -47,7 +46,7 @@ function solve(args) {
 
     function createBoard() {
         let start = 1;
-        let field = [];
+        const field = [];
         for (let row = 0; row < rows; row += 1) {
             field[row] = [];
             for (let col = 0; col < cols; col += 1) {

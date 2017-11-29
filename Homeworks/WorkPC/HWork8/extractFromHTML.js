@@ -11,7 +11,7 @@ function solve(args) {
     console.log(result);
 }
 
-let arr = [
+const arr = [
     '<html>',
     '  <head>',
     '    <title>Sample site</title>',
@@ -23,6 +23,6 @@ let arr = [
     '    </div>',
     '    in body',
     '  </body>',
-    '</html>'
+    '</html>',
 ];
 solve(arr);

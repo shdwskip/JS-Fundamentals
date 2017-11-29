@@ -1,20 +1,18 @@
-function numMatrix(arr){
+function numMatrix(arr) {
+    const N = parseInt(arr[0]);
 
-    let N = parseInt(arr[0]);
-
-    for (var row = 1; row <= N; row += 1) {
+    for (let row = 1; row <= N; row += 1) {
         let line = '';
-        for( var col = row; col <= row + N - 1; col += 1){
+        for ( let col = row; col <= row + N - 1; col += 1) {
             line += col + ' ';
             if (col == row + N - 1) {
                 line.trim();
                 console.log(line);
             }
         }
-
     }
 }
 
-let arr = Array;
+const arr = Array;
 arr[0] = '4';
 numMatrix(arr);

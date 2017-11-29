@@ -7,7 +7,7 @@ function solve(args) {
         peaksIndexes = [],
         valleys = [];
 
-    //create valleys array
+    // create valleys array
     for (let i = 1; i < heights.length - 1; i += 1) {
         if (heights[i - 1] > heights[i]) {
             if (heights[i + 1] > heights[i]) {
@@ -16,7 +16,7 @@ function solve(args) {
         }
     }
 
-    //create peaksIndexes array
+    // create peaksIndexes array
     for (let i = 0, len = heights.length; i < len; i += 1) {
         if (i !== 0) {
             if (i !== len - 1) {
@@ -26,7 +26,6 @@ function solve(args) {
             } else {
                 peaksIndexes.push(i);
             }
-
         } else {
             peaksIndexes.push(i);
         }

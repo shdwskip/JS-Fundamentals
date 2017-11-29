@@ -1,6 +1,6 @@
 function getRandomValue(opt) {
-    var min = +opt.min || Number.MIN_VALUE;
-    var max = +opt.max || Number.MAX_VALUE;
+    const min = +opt.min || Number.MIN_VALUE;
+    const max = +opt.max || Number.MAX_VALUE;
     console.log(Number.MIN_VALUE);
     console.log(Number.MAX_VALUE);
 

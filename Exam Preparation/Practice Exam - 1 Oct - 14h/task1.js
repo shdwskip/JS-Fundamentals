@@ -1,12 +1,12 @@
 function solve(args) {
     let result = 0,
         balanced = false;
-    for (let i = 0; i < args.length; i += 1){
-        let number = args[i];
-        
+    for (let i = 0; i < args.length; i += 1) {
+        const number = args[i];
+
         if (parseInt(number[0]) + parseInt(number[2]) === parseInt(number[1])) {
             result += parseInt(number);
-        }else{
+        } else {
             break;
         }
     }

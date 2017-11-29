@@ -1,9 +1,9 @@
 function HexToDec(args) {
-    let hexNum = args[0].toString();
-    let hexNumLen = hexNum.length;
+    const hexNum = args[0].toString();
+    const hexNumLen = hexNum.length;
     let decNum = 0;
-   
-    for(let i = 0; i < hexNumLen; i += 1){
+
+    for (let i = 0; i < hexNumLen; i += 1) {
         let hexDigit = hexNum[i];
         switch (hexDigit) {
             case 'A': hexDigit = 10; break;
@@ -15,13 +15,9 @@ function HexToDec(args) {
             default: break;
         }
         decNum = +hexDigit + decNum * 16;
-
-
     }
     console.log(decNum);
-
-
 }
-let arr = Array;
+const arr = Array;
 arr[0] = '4ED528CBB4';
 HexToDec(arr);

@@ -4,8 +4,8 @@ function solve(args) {
         bearLegs = 2,
         humanLegs = 5,
         combinations = 0;
-    
-    let currentTime = new Date();
+
+    const currentTime = new Date();
 
     // if (total === 2000) {
     //     console.log('28772');
@@ -26,11 +26,10 @@ function solve(args) {
             }
         }
     }
-    
+
     console.log(combinations);
     console.log(new Date() - currentTime);
     // }
-
 }
 
 solve(['2000']);

@@ -1,22 +1,21 @@
 function digit(params) {
     let num = +params,
         digit = Math.abs(num % 10);
-    
-    switch (digit){
-        case 1 : console.log('one');break;
-        case 2 : console.log('two');break;
-        case 3 : console.log('three');break;
-        case 4 : console.log('four');break;
-        case 5 : console.log('five');break;
-        case 6 : console.log('six');break;
-        case 7 : console.log('seven');break;
-        case 8 : console.log('eight');break;
-        case 9 : console.log('nine');break;
-        case 0 : console.log('zero');break;
-        default : break;
-    }
 
+    switch (digit) {
+        case 1: console.log('one'); break;
+        case 2: console.log('two'); break;
+        case 3: console.log('three'); break;
+        case 4: console.log('four'); break;
+        case 5: console.log('five'); break;
+        case 6: console.log('six'); break;
+        case 7: console.log('seven'); break;
+        case 8: console.log('eight'); break;
+        case 9: console.log('nine'); break;
+        case 0: console.log('zero'); break;
+        default: break;
+    }
 }
 
-let params = '42';
+const params = '42';
 digit(params);

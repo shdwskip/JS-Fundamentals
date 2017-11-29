@@ -3,22 +3,22 @@ function solve(args) {
         cols = +args[1],
         board = args.slice(2, 2 + rows),
         allMoves = args.slice(3 + rows);
-    let knightMoves = [[-2, 1], [-1, 2], [1, 2], [2, 1],
+    const knightMoves = [[-2, 1], [-1, 2], [1, 2], [2, 1],
     [2, -1], [1, -2], [-1, -2], [-2, -1]];
 
     function parseMove(move) {
-        let cells = move.split(' ');
+        const cells = move.split(' ');
 
         return {
             from: {
                 row: rows - Number(cells[0][1]),
-                col: cells[0].charCodeAt(0) - 97
+                col: cells[0].charCodeAt(0) - 97,
             },
             to: {
                 row: rows - Number(cells[1][1]),
-                col: cells[1].charCodeAt(0) - 97
-            }
-        }
+                col: cells[1].charCodeAt(0) - 97,
+            },
+        };
     }
 
     function moveRook(from, to) {
@@ -58,8 +58,8 @@ function solve(args) {
             return false;
         }
 
-        let deltaRow = from.row > to.row ? -1 : 1;
-        let deltaCol = from.col > to.col ? -1 : 1;
+        const deltaRow = from.row > to.row ? -1 : 1;
+        const deltaCol = from.col > to.col ? -1 : 1;
 
         while ((from.row !== to.row) || (from.col !== to.col)) {
             from.row += deltaRow;
@@ -69,7 +69,7 @@ function solve(args) {
                 return false;
             }
         }
-        
+
         return true;
     }
     function moveQueen(from, to) {
@@ -77,7 +77,7 @@ function solve(args) {
     }
 
     function moveKnight(from, to) {
-        let requestedMove = [from.row - to.row, from.col - to.col];
+        const requestedMove = [from.row - to.row, from.col - to.col];
 
         if (from.row === to.row || from.col === to.col) {
             return false;
@@ -87,9 +87,8 @@ function solve(args) {
             if (knightMoves[i][0] === requestedMove[0] && knightMoves[i][1] === requestedMove[1]) {
                 if (board[to.row][to.col] !== '-') {
                     return false;
-                } else {
-                    return true;
                 }
+                    return true;
             }
         }
         if ((from.row !== to.row) && (from.col !== to.col)) {
@@ -104,15 +103,14 @@ function solve(args) {
     }
 
     for (m of allMoves) {
-        let move = parseMove(m);
-        let figure = board[move.from.row][move.from.col];
+        const move = parseMove(m);
+        const figure = board[move.from.row][move.from.col];
 
         if (figure === 'Q') {
-            let canMove = moveQueen(move.from, move.to);
+            const canMove = moveQueen(move.from, move.to);
             console.log(canMove ? 'yes' : 'no');
-        }
-        else if (figure === 'K') {
-            let canMove = moveKnight(move.from, move.to);
+        } else if (figure === 'K') {
+            const canMove = moveKnight(move.from, move.to);
             console.log(canMove ? 'yes' : 'no');
         } else {
             console.log('no');

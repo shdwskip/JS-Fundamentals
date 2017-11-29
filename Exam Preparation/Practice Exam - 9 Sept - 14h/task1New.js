@@ -8,8 +8,8 @@ function solve(args) {
     for (let i = 0; i < len; i += 1) {
         numArray.push(+number[i]);
     }
-    
-    let finalArray = [];
+
+    const finalArray = [];
 
     while (iterations < 10) {
         let lastDigit = numArray.length - 1,
@@ -21,7 +21,6 @@ function solve(args) {
             iterations += 1;
         }
         if (iterations !== 10) {
-
             lastDigit = 0;
             numArray[len - i] = lastDigit;
             i += 1;
@@ -36,8 +35,7 @@ function solve(args) {
                     finalArray.push(numArray.join(''));
                     i += 1;
                     iterations += 1;
-                }
-                else if (len - i === 0) {
+                } else if (len - i === 0) {
                     numArray[len - i] = 0;
                     numArray.unshift(1);
                     finalArray.push(numArray.join(''));
@@ -49,7 +47,7 @@ function solve(args) {
         }
     }
 
-    for(let num of finalArray){
+    for (const num of finalArray) {
         console.log(num);
     }
 }

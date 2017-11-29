@@ -1,27 +1,27 @@
 function solve(arr) {
-    var el = arr[0];
+    const el = arr[0];
     if (!Array.hasOwnProperty('removeEl')) {
-        Array.prototype.removeEl = function(el){
-            var i,
+        Array.prototype.removeEl = function(el) {
+            let i,
                 len = this.length;
-            
-            for(i = 0; i < len; i += 1){
+
+            for (i = 0; i < len; i += 1) {
                 if (this[i] === el) {
                     this.splice(i, 1);
                     i -= 1;
                     len -= 1;
                 }
             }
-        }        
+        };
     }
     arr.removeEl(el);
 
-    for(var i = 0, len = arr.length; i < len; i += 1){
+    for (let i = 0, len = arr.length; i < len; i += 1) {
         console.log(arr[i]);
     }
 }
 
-var arr = [ '_h/_',
+const arr = ['_h/_',
   '^54F#',
   'V',
   '^54F#',
@@ -40,5 +40,5 @@ var arr = [ '_h/_',
   '^54F#',
   'kv?tc`',
   'kv?tc`',
-  'Z285' ];
+  'Z285'];
 solve(arr);

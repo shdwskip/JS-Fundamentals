@@ -7,7 +7,7 @@ function pritnTriangle(n) {
         printLine(1, line);
     }
 
-    for(line = n - 1; line >= 1; line -= 1){
+    for (line = n - 1; line >= 1; line -= 1) {
         printLine(1, line);
     }
 }

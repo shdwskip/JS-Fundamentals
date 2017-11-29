@@ -2,9 +2,9 @@ function solve(args) {
     let signal = args[0],
     result = [];
 
-    for (let i = 0; i < signal.length; i += 1){
-        let current = signal[i];
-        let next = signal[i+1];
+    for (let i = 0; i < signal.length; i += 1) {
+        const current = signal[i];
+        const next = signal[i+1];
         if (current == next) {
             continue;
         }

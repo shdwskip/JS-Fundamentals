@@ -1,12 +1,12 @@
 /* jshint esversion: 6 */
 function solve(args) {
-    let commands = args;
+    const commands = args;
     let arrNumbers = [];
 
-    for(let line of commands){
-        let currentLine = line.split(' ');
-        let currentCommand = currentLine[0];
-        let currentNumber = +currentLine[1];
+    for (const line of commands) {
+        const currentLine = line.split(' ');
+        const currentCommand = currentLine[0];
+        const currentNumber = +currentLine[1];
         switch (currentCommand) {
             case 'set': set(currentNumber); break;
             case 'print': print(); break;
@@ -32,7 +32,7 @@ function solve(args) {
     function frontAdd(number) {
         arrNumbers.unshift(number);
     }
-    
+
     function frontRemove(number) {
         arrNumbers.shift(number);
     }

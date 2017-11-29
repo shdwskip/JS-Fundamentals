@@ -13,15 +13,15 @@ function solve(params) {
         }
         return false;
     }
-    heights.forEach(function (height, index) {
+    heights.forEach(function(height, index) {
         if (isPeak(index)) {
             peaks.push(index);
         }
     });
 
     for (let i = 1; i < peaks.length; i += 1) {
-        let startIndex = peaks[i - 1];
-        let endIndex = peaks[i];
+        const startIndex = peaks[i - 1];
+        const endIndex = peaks[i];
         result = 0;
         for (let j = startIndex; j <= endIndex; j += 1) {
             result += heights[j];
@@ -47,9 +47,9 @@ function solve(params) {
 //     }
 //    console.log(maxResult);
 solve([
-    "5 1 7 4 8"
+    '5 1 7 4 8',
 ]);
 
 solve([
-    "5 1 7 6 5 6 4 2 3 8"
+    '5 1 7 6 5 6 4 2 3 8',
 ]);

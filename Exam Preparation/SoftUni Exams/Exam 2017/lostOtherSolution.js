@@ -1,7 +1,7 @@
 function solve(keyword, text) {
-    let pattern = /(north|east)\D*(\d{2})[^,]*(,)\D*(\d{6})/gi;
-    let messagePattern = new RegExp(`(${keyword})(.*?)(${keyword})`, 'g');
-    let message = messagePattern.exec(text)[2];
+    const pattern = /(north|east)\D*(\d{2})[^,]*(,)\D*(\d{6})/gi;
+    const messagePattern = new RegExp(`(${keyword})(.*?)(${keyword})`, 'g');
+    const message = messagePattern.exec(text)[2];
 
     let latOutput = '';
     let longOutput = '';

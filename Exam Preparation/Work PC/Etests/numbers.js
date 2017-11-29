@@ -33,7 +33,5 @@ function solve(args) {
             iterations += 1;
         }
     }
-
-
 }
 solve(['9243536798']);

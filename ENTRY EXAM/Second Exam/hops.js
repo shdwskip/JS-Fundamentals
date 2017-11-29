@@ -1,23 +1,23 @@
 function solve(args) {
-    let directions = [];
-    let allEatenCarrots = [];
-    let board = args[0].split(', ').map(Number);
-    let len = board.length;
+    const directions = [];
+    const allEatenCarrots = [];
+    const board = args[0].split(', ').map(Number);
+    const len = board.length;
 
     for (let j = 2; j < args.length; j += 1) {
-        let line = args[j].split(', ').map(Number);
+        const line = args[j].split(', ').map(Number);
         directions.push(line);
     }
 
-    for (let sequence of directions) {
-        let field = board.slice(0);
+    for (const sequence of directions) {
+        const field = board.slice(0);
         let currentPosition = 0,
             jumpIndex = 0;
         let eatenCarrots = field[0];
         field[0] = '@';
 
         while (true) {
-            let currentHop = sequence[jumpIndex];
+            const currentHop = sequence[jumpIndex];
             currentPosition += currentHop;
             if (currentPosition >= 0 && currentPosition < len && field[currentPosition] !== '@') {
                 eatenCarrots += field[currentPosition];
@@ -26,8 +26,7 @@ function solve(args) {
                 if (jumpIndex >= sequence.length) {
                     jumpIndex = 0;
                 }
-            }
-            else {
+            } else {
                 allEatenCarrots.push(eatenCarrots);
                 break;
             }
@@ -41,5 +40,5 @@ solve(
         '3',
         '3, 2, -1',
         '2, 2, -4',
-        '2, -3'
+        '2, -3',
     ]);

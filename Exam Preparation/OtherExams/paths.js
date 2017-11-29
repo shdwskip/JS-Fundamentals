@@ -3,7 +3,7 @@ function solve(params) {
     let arr = params[0].split(' '),
         rows = +arr[0],
         cols = +arr[1],
-        directions = params.splice(1).map(function (line) {
+        directions = params.splice(1).map(function(line) {
             return line.split(' ');
         }),
         board = [],
@@ -22,7 +22,7 @@ function solve(params) {
     }
 
     while (deltaR >= 0 && deltaR < rows && deltaC >=0 && deltaC < cols && !failed) {
-        let move = directions[deltaR][deltaC];
+        const move = directions[deltaR][deltaC];
         visited.push([deltaR, deltaC]);
         result += board[deltaR][deltaC];
         for (let y = 0; y < move.length; y += 1) {

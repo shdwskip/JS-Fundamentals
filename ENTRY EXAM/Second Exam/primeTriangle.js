@@ -1,6 +1,6 @@
 function solve(args) {
-    let N = +args[0];
-    let sequence = [];
+    const N = +args[0];
+    const sequence = [];
 
     for (let i = 1; i <= N; i += 1) {
         sequence[i] = true;
@@ -13,8 +13,8 @@ function solve(args) {
             }
         }
     }
-    
-    let primeSequence = sequence.slice(0, sequence.lastIndexOf(true) + 1);
+
+    const primeSequence = sequence.slice(0, sequence.lastIndexOf(true) + 1);
 
     for (let i = 1; i < primeSequence.length; i += 1) {
         let line = '';
@@ -30,7 +30,6 @@ function solve(args) {
         }
         console.log(line);
     }
-
 }
 
 
